@@ -18,7 +18,7 @@ node[:deploy].each do |application, deploy|
     workers deploy[:puma] && deploy[:puma][:workers] ? deploy[:puma][:workers] : 2
     worker_timeout deploy[:puma] && deploy[:puma][:worker_timeout] ? deploy[:puma][:worker_timeout] : 30
     restart_timeout deploy[:puma] && deploy[:puma][:restart_timeout] ? deploy[:puma][:restart_timeout] : 120
-    exec_prefixdeploy[:puma] && deploy[:puma][:exec_prefix] ? deploy[:puma][:exec_prefix] : 'bundle exec'
+    exec_prefix deploy[:puma] && deploy[:puma][:exec_prefix] ? deploy[:puma][:exec_prefix] : 'bundle exec'
     prune_bundler deploy[:puma] && deploy[:puma][:prune_bundler] ? deploy[:puma][:prune_bundler] : true
     preload_app deploy[:puma] && deploy[:puma][:preload_app] ? deploy[:puma][:preload_app] : false
   end
